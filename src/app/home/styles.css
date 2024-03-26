@@ -1,14 +1,44 @@
 .bg-img{
-    animation: 5s ease-out 0s 1 background-transition;
+    animation: 1s ease-out 0s 1 left-to-right;
     position: fixed;
     z-index: -1;
 }
 
-@keyframes background-transition {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
+@keyframes left-to-right {
+  0% {
+    transform: translateX(-100%);
   }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes right-to-left {
+  0% {
+    right: -100%;
+  }
+  100% {
+    right: 0;
+  }
+}
+
+.pageHeading {
+  animation: 0.5s ease-out 0s 1 left-to-right;
+  margin-bottom: 1.5rem;
+}
+
+.description {
+  right: -100%; 
+  animation: 0.5s forwards 0s 1 right-to-left;
+  position: relative;
+}
+
+.content{
+  color: #3730a3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 6rem;
+  position: relative;
+}
+
