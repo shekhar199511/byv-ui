@@ -9,9 +9,18 @@ import './styles.css'
 const Home = (props) => {
     return(
         <div>
-            <AppBar position="static" sx={{ bgcolor: "white" }}>
+            <AppBar position="static" sx={{ bgcolor: "white" }} elevation={0}>
                 <Container maxWidth="xl">
-                <Toolbar disableGutters></Toolbar>
+                <Toolbar disableGutters>
+                <Image
+                    src="/logo.png"
+                    layout="fill"
+                    objectFit="contain"
+                    quality={100}
+                    priority
+                    alt="Logo of application"
+                />
+                </Toolbar>
                 </Container>
             </AppBar>
             <Image
