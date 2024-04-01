@@ -1,28 +1,12 @@
 import Image from "next/image";
-import AppBar from '@mui/material/AppBar';
 
-import Toolbar from '@mui/material/Toolbar';
-
-import Container from '@mui/material/Container';
+import NavBar from "@/components/navbar";
 
 import './styles.css'
 const Home = (props) => {
     return(
         <div>
-            <AppBar position="static" sx={{ bgcolor: "white" }} elevation={0}>
-                <Container maxWidth="xl">
-                <Toolbar disableGutters>
-                <Image
-                    src="/logo.png"
-                    layout="fill"
-                    objectFit="contain"
-                    quality={100}
-                    priority
-                    alt="Logo of application"
-                />
-                </Toolbar>
-                </Container>
-            </AppBar>
+            <NavBar />
             <Image
                 src="/hyundai.jpg"
                 layout="fill"

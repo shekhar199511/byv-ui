@@ -1,0 +1,12 @@
+.brand-icon{
+    padding: 1.5em;
+}
+
+.menu-items{
+    border-radius: 15%;
+}
+.menu-items:hover{
+    background-color: #3730a3;
+    
+    color: white;
+}
