@@ -3,10 +3,31 @@
 }
 
 .menu-items{
-    border-radius: 15%;
+    height: 2.5rem;
+    width: 6rem;
+    border-radius: 3rem;
+    margin-right: 1em;
+    
 }
 .menu-items:hover{
-    background-color: #3730a3;
-    
+    background-color: #a5b4fc;
     color: white;
+    font-weight: 900;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.login {
+    height: 2.5rem;
+    width: 12rem;
+    border-radius: 1rem;
+    background-color: #3730a3;
+    color: white;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.login:hover {
+    
+    background-color: white;
+    color: #3730a3;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
 }

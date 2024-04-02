@@ -11,7 +11,7 @@ const pages = ['Vehicles', 'Orders']
 
 const NavBar = (props) => {
     return (
-        <AppBar position="static" sx={{ bgcolor: "beige" }} elevation={0}>
+        <AppBar position="static" sx={{ bgcolor: "white" }} elevation={0}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{ display: 'flex', width: '100%', justifyContent: 'space-between' }}>
@@ -28,23 +28,30 @@ const NavBar = (props) => {
                                 className="brand-icon"
                             />
                         </Box>
-                        <Box sx={{ display: 'flex'  }}> 
+                        <Box sx={{ display: 'flex', alignItems: 'center'  }}> 
                             {pages.map((page) => (
                                 <Button
                                     key={page}
                                     sx={{ my: 2, color: '#3730a3', display: 'block', fontWeight: 'bold' }}
                                     className='menu-items'
-                                    size='small'
                                 >
                                     {page}
                                 </Button>
                             ))}
                         </Box>
-                        <Box sx={{ display: 'flex'  }}>
+                        <Box sx={{ display: 'flex', alignItems: 'center'  }}>
                             <Button
                                 key="account"
                                 sx={{ my: 2, color: '#3730a3', display: 'block', fontWeight: 'bold' }}
+                                className='login'
                             >
+                                <Image
+                                    src="/locked.svg"
+                                    alt="login"
+                                    layout="fill"
+                                    objectFit="contain"
+                                    priority
+                                />
                                 Login/Acccount
                             </Button>
                         </Box>
