@@ -4,7 +4,7 @@
 
 .menu-items{
     height: 2.5rem;
-    width: 6rem;
+    width: fit-content;
     border-radius: 3rem;
     margin-right: 1em;
     
@@ -18,16 +18,39 @@
 
 .login {
     height: 2.5rem;
-    width: 12rem;
+    width: fit-content;
     border-radius: 1rem;
     background-color: #3730a3;
     color: white;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    padding: 0.5rem;
 }
 
 .login:hover {
-    
     background-color: white;
     color: #3730a3;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+    
+}
+
+.locked-icon{
+    animation: 0.5s ease-out 0s 1 down-to-up;
+    opacity: 1;
+}
+
+.locked-icon-hidden{
+    opacity: 0;
+}
+
+@keyframes down-to-up {
+    0% {
+      bottom: -100%;
+    }
+    100% {
+      bottom: 0;
+    }
+  }
+
+.login-text{
+    margin-left: 0.5rem;
 }
