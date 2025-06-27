@@ -20,6 +20,12 @@ jobs:
     # Specifies the runner environment for this job (GitHub-hosted virtual machine)
     runs-on: ubuntu-latest
 
+    # --- PERMISSIONS BLOCK ---
+    permissions:
+      contents: read     # Allows reading code (default, but good to be explicit)
+      pull-requests: write # Allows updating PR status checks (like the red X/green check)
+      issues: write      # CRITICAL: This allows the action to post comments on the PR
+
     # Define the sequence of steps for this job
     steps:
       # Step 1: Checkout the code from the Pull Request.
