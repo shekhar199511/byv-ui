@@ -5,6 +5,11 @@ import NavBar from "@/components/navbar";
 
 import './styles.css'
 const Home = (props) => {
+
+    a = a+1;
+
+    let a;
+
     return(
         <div>
             <NavBar />
