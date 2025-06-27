@@ -1,0 +1,71 @@
+# .github/workflows/pr-ai-analysis.yml
+# This workflow resides in your React application's repository (e.g., 'my-react-app')
+# It tells GitHub to run your custom AI Merge Analyzer action on Pull Requests.
+
+name: AI Pull Request Merge Check
+
+# This workflow will be triggered automatically when:
+# - A new pull request is opened that targets the 'main' branch.
+# - New commits are pushed to an existing pull request targeting 'main'.
+# - An existing pull request targeting 'main' is reopened.
+on:
+  pull_request:
+    branches:
+      - main # IMPORTANT: Replace 'main' with the actual name of your main/default branch (e.g., 'master', 'develop')
+    types: [opened, synchronize, reopened] # Triggers for PR creation, new commits, or reopening
+
+# Define a single job for the AI analysis
+jobs:
+  ai_merge_analysis:
+    # Specifies the runner environment for this job (GitHub-hosted virtual machine)
+    runs-on: ubuntu-latest
+
+    # Define the sequence of steps for this job
+    steps:
+      # Step 1: Checkout the code from the Pull Request.
+      # This is essential so that the AI action can access the Git diff.
+      - name: Checkout Pull Request Code
+        uses: actions/checkout@v4
+        with:
+          # fetch-depth: 0 is crucial to ensure the action can generate a full diff
+          # between the source branch and the target branch.
+          fetch-depth: 0
+
+      # Step 2: Run your Universal AI Merge Issue Analyzer Action.
+      # This is the key step where you call the action you developed.
+      #
+      # IMPORTANT: Replace 'your-github-username' with the actual GitHub username
+      # or organization that owns the 'universal-ai-merge-analyzer-action' repository.
+      # Use the tag (e.g., 'v1') you created for your action.
+      - name: Run AI-Powered Merge Analysis
+        uses: your-github-username/ai-merge-analyzer-action@v1 # e.g., 'octocat/ai-merge-analyzer-action@v1'
+        id: ai_analysis_step # Assign an ID to reference its outputs later (e.g., for custom checks)
+        with:
+          # Configure the AI provider to use.
+          # This corresponds to the 'ai_provider' input in your action.yml.
+          ai_provider: 'gemini' # Possible values: 'gemini', 'openai', etc.
+
+          # Pass your API key from the GitHub Secret you created in Step 1.
+          # The name here (`secrets.GEMINI_API_KEY`) must exactly match
+          # the secret name you defined in your repository settings.
+          ai_api_key: ${{ secrets.GEMINI_API_KEY }} # Ensure this matches your secret name!
+
+          # Specify the particular AI model you want to use.
+          # This corresponds to the 'model_name' input in your action.yml.
+          # Examples: 'gemini-2.0-flash', 'gpt-4o', 'claude-3-opus-20240229'
+          model_name: 'gemini-2.0-flash'
+
+          # Optional: If you're using a custom base URL for your AI provider (e.g., an internal proxy),
+          # uncomment and configure this input. Otherwise, leave it commented for defaults.
+          # api_base_url: 'https://api.my-custom-ai-service.com/v1'
+
+      # Optional Step 3: Add a status check to the Pull Request.
+      # This step will make the GitHub Action job either pass (green check) or fail (red X)
+      # based on the AI's analysis status. This is useful for Quality Gates.
+      - name: Set Pull Request Status Check
+        # This 'if' condition ensures this step only runs if the AI reported a 'FAIL' status.
+        if: steps.ai_analysis_step.outputs.analysis_status == 'FAIL'
+        shell: bash # Use bash for the command
+        run: |
+          echo "AI analysis reported issues. This job will fail to block the merge."
+          exit 1 # Exiting with a non-zero code marks the GitHub Action job as failed
