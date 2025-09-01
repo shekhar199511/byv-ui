@@ -44,7 +44,7 @@ jobs:
       # or organization that owns the 'universal-ai-merge-analyzer-action' repository.
       # Use the tag (e.g., 'v1') you created for your action.
       - name: Run AI-Powered Merge Analysis
-        uses: shekhar199511/ai-merge-analyzer@v1.0.6 # e.g., 'octocat/ai-merge-analyzer-action@v1'
+        uses: shekhar199511/ai-merge-analyzer@v1.0.7 # e.g., 'octocat/ai-merge-analyzer-action@v1'
         id: ai_analysis_step # Assign an ID to reference its outputs later (e.g., for custom checks)
         with:
           # Configure the AI provider to use.
