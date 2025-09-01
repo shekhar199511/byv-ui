@@ -1,10 +1,20 @@
 'use client'
 import Image from "next/image";
-
+import { useState, useEffect } from 'react';
 import NavBar from "@/components/navbar";
 
 import './styles.css'
 const Home = (props) => {
+
+    a = a+1;
+
+    let a;
+
+    const [count, setCount] = useState(0)
+
+    useEffect(()=>{
+        setCount(count+1)
+    }, [count])
     return(
         <div>
             <NavBar />
