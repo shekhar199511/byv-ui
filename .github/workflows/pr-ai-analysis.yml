@@ -65,6 +65,9 @@ jobs:
           # uncomment and configure this input. Otherwise, leave it commented for defaults.
           # api_base_url: 'https://api.my-custom-ai-service.com/v1'
 
+          # Pass github token for inline comments
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
       # Optional Step 3: Add a status check to the Pull Request.
       # This step will make the GitHub Action job either pass (green check) or fail (red X)
       # based on the AI's analysis status. This is useful for Quality Gates.
